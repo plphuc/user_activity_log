@@ -1,0 +1,2 @@
+Churn User: 4645
+Churn rate: 0.18563

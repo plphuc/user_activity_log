@@ -1,0 +1,2 @@
+Number of returning users: 3724
+Returning rate: 0.14882
