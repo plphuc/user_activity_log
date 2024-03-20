@@ -13,7 +13,7 @@ spark = SparkSession \
     .config("spark.some.config.option", "some-value") \
     .getOrCreate()
   
-df = spark.read.parquet('2024/01/parquet')
+df = spark.read.parquet('../test/1')
 df.createOrReplaceTempView("parquetFile")
-teenagers = spark.sql("SELECT DISTINCT action FROM parquetFile")
-teenagers.show()
+df.show()
+print(df.schema)
