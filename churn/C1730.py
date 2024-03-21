@@ -34,8 +34,8 @@ def readParquet(paths):
 #   file.write('Churn rate: ' + str(round(numChurnUsers/numBDUsers, 5)) + "\n")
 
 # ------------------- C7-------------------
-bWeekDf = readParquet([f'2024/01/parquet/{i}' for i in range(1, 8)])
-aWeekDf = readParquet([f'2024/01/parquet/{i}' for i in range(8, 15)])
+bWeekDf = readParquet([f'../2024/01/parquet/{i}' for i in range(1, 8)])
+aWeekDf = readParquet([f'../2024/01/parquet/{i}' for i in range(8, 15)])
 
 bWeekDf.createOrReplaceTempView("bWeekDf")
 aWeekDf.createOrReplaceTempView("aWeekDf")
