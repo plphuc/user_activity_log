@@ -10,9 +10,9 @@ def readParquet(paths):
   return df
 
 # ----------------- retention rate in 7 days from 10/1 - 17/1 ------------------
-CS = readParquet([f'2024/01/parquet/{i}' for i in range(1, 10)])
+CS = readParquet([f'../2024/01/parquet/{i}' for i in range(1, 10)])
 CS.createOrReplaceTempView("CS")
-CE = readParquet([f'2024/01/parquet/{i}' for i in range(10, 18)])
+CE = readParquet([f'../2024/01/parquet/{i}' for i in range(10, 18)])
 CE.createOrReplaceTempView("CE")
 
 CSUsers = spark.sql(f'''SELECT DISTINCT uid FROM CS''')
