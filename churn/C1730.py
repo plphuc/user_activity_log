@@ -9,29 +9,28 @@ def readParquet(paths):
   return df
 
 # ----------------C1 [1/1/2024 vs 2/1/2024]----------------
-# bDayDf = readParquet([f'2024/01/parquet/1'])
-# aDayDf = readParquet([f'2024/01/parquet/2'])
+bDayDf = readParquet([f'../2024/01/parquet/1'])
+aDayDf = readParquet([f'../2024/01/parquet/2'])
 
-# bDayDf.createOrReplaceTempView("bDayDf")
-# aDayDf.createOrReplaceTempView("aDayDf")
+bDayDf.createOrReplaceTempView("bDayDf")
+aDayDf.createOrReplaceTempView("aDayDf")
 
-# with open("C1.txt", "w") as file:
-#   bDUsers = spark.sql(f'''SELECT DISTINCT uid \
-#             FROM bDayDf''')
-#   numBDUsers = bDUsers.count()
-#   print(numBDUsers)
+with open("C1.txt", "w") as file:
+  bDUsers = spark.sql(f'''SELECT DISTINCT uid \
+            FROM bDayDf''')
+  numBDUsers = bDUsers.count()
   
-#   bDUsers.createOrReplaceTempView("bDUsers")
+  bDUsers.createOrReplaceTempView("bDUsers")
   
-#   aDUsers = spark.sql(f'''SELECT DISTINCT uid \
-#             FROM aDayDf''')
-#   print(aDUsers.count())
-#   aDUsers.createOrReplaceTempView("aDUsers")
+  aDUsers = spark.sql(f'''SELECT DISTINCT uid \
+            FROM aDayDf''')
+  print(aDUsers.count())
+  aDUsers.createOrReplaceTempView("aDUsers")
   
-#   churnUsers = spark.sql(f'''SELECT (*) FROM bDUsers WHERE uid NOT IN (SELECT uid FROM aDUsers)''')
-#   numChurnUsers = churnUsers.count()
-#   file.write('Churn User: ' + str(numChurnUsers) + "\n")
-#   file.write('Churn rate: ' + str(round(numChurnUsers/numBDUsers, 5)) + "\n")
+  churnUsers = spark.sql(f'''SELECT (*) FROM bDUsers WHERE uid NOT IN (SELECT uid FROM aDUsers)''')
+  numChurnUsers = churnUsers.count()
+  file.write('Churn User: ' + str(numChurnUsers) + "\n")
+  file.write('Churn rate: ' + str(round(numChurnUsers/numBDUsers, 5)) + "\n")
 
 # ------------------- C7-------------------
 bWeekDf = readParquet([f'../2024/01/parquet/{i}' for i in range(1, 8)])

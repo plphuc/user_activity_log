@@ -10,9 +10,9 @@ def readParquet(paths):
   return df
 
 #--------------------R1--------------------
-fDay = readParquet(['2024/01/parquet/1'])
-sDay = readParquet(['2024/01/parquet/2'])
-tDay = readParquet(['2024/01/parquet/3'])
+fDay = readParquet(['../2024/01/parquet/1'])
+sDay = readParquet(['../2024/01/parquet/2'])
+tDay = readParquet(['../2024/01/parquet/3'])
 
 fDay.createOrReplaceTempView("fDay")
 sDay.createOrReplaceTempView("sDay")

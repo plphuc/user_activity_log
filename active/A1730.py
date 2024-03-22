@@ -17,11 +17,10 @@ def readParquet(paths):
 #   file.write(str(result) + "\n")
 
 #----------------An----------------
-n=1 #(A7)
+n = 7
 df = readParquet([f'../2024/01/parquet/{i}' for i in range(1, n+1)])
-# df = readParquet([f'2024/01/parquet/{i}' for i in range(1, n+1)])
 df.createOrReplaceTempView("df")
-with open("A1.txt", "w") as file:
+with open("A7.txt", "w") as file:
   result = spark.sql("SELECT COUNT(DISTINCT uid) \
             FROM df").collect()
   file.write(str(result) + "\n")

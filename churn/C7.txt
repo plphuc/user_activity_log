@@ -1,0 +1,2 @@
+Churn User: 1
+Churn rate: 0.0
