@@ -15,7 +15,8 @@ customSchema = StructType([\
     StructField("time", LongType(), False),\
     StructField("action", ByteType(), False)])
 
-for i in range (1, 32):
+for i in range (1, 2):
     df = spark.read.option('header', True).csv(f'2024/01/csv/log{i}.csv', schema = customSchema)
     df2 = df.select(df.uid, from_unixtime(df.time, 'dd-MM-yyyy').alias('time'), df.action)
-    df2.repartition(10).write.parquet(f"2024/01/parquet/{i}")
+    print(df2.show(5))
+    # df2.repartition(10).write.parquet(f"2024/01/parquet/{i}")

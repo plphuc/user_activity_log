@@ -1,1 +1,2 @@
-Retention users:1Retention rate: 0.0
+Retention users:30000 
+Retention rate: 1.0
